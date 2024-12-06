@@ -1,12 +1,13 @@
 package org.example;
 
 import java.io.Serializable;
+import java.util.Scanner;
 
 public class Configuration implements Serializable {
-    private int totalTickets;
-    private int ticketReleaseRate;
-    private int customerRetrievalRate;
-    private int maxTicketCapacity;
+    private static int totalTickets;
+    private static int ticketReleaseRate;
+    private static int customerRetrievalRate;
+    private static int maxTicketCapacity;
 
     // Getters and Setters
     public int getTotalTickets() {
@@ -41,17 +42,38 @@ public class Configuration implements Serializable {
         this.maxTicketCapacity = maxTicketCapacity;
     }
 
-    public void getConfigDetails(){
-        System.out.println("Test details");
-    }
+    public static void getConfiguration(){
+        totalTickets = validateConfiguration("Enter the total number of tickets: ");
+        ticketReleaseRate = validateConfiguration("Enter the ticket release rate: ");
+        customerRetrievalRate = validateConfiguration("Enter the customer retrieval rate: ");
 
-    // Validate Configuration
-    public boolean isValid() {
-        return totalTickets > 0 &&
-                ticketReleaseRate > 0 &&
-                customerRetrievalRate > 0 &&
-                maxTicketCapacity > 0 &&
-                maxTicketCapacity <= totalTickets;
+        while (true) {
+            maxTicketCapacity = validateConfiguration("Enter the maximum ticket capacity: ");
+            if (maxTicketCapacity <= totalTickets) {
+                break; // Exit the loop if maxTicketCapacity is valid
+            } else {
+                System.out.println("Maximum ticket capacity must be less than or equal to the total number of tickets.");
+            }
+        }
+    }
+    public static int validateConfiguration(String prompt){
+        Scanner reader = new Scanner(System.in);
+        int input ;
+        while (true){
+            System.out.print(prompt);
+
+            try{
+                String userInput = reader.nextLine();
+                input = Integer.parseInt(userInput);
+                if(input>0){
+                    return input;
+                }else{
+                    System.out.println("Please enter a valid number.");
+                }
+            }catch (NumberFormatException e){
+                System.out.println("Please enter a positive integer.");
+            }
+        }
     }
 }
 

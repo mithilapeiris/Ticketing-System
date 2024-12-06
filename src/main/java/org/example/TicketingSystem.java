@@ -10,25 +10,7 @@ public class TicketingSystem {
         // Collect user input for configuration
         System.out.println("Welcome to the Ticketing System Configuration!");
 
-        //config.getConfigDetails();
-
-        System.out.print("Enter total number of tickets: ");
-        config.setTotalTickets(scanner.nextInt());
-
-        System.out.print("Enter ticket release rate (ms): ");
-        config.setTicketReleaseRate(scanner.nextInt());
-
-        System.out.print("Enter customer retrieval rate (ms): ");
-        config.setCustomerRetrievalRate(scanner.nextInt());
-
-        System.out.print("Enter maximum ticket capacity: ");
-        config.setMaxTicketCapacity(scanner.nextInt());
-
-        // Validate configuration
-        if (!config.isValid()) {
-            System.out.println("Invalid configuration. Exiting...");
-            return;
-        }
+        config.getConfiguration();
 
         System.out.println("Configuration is valid. Initializing system...");
 
