@@ -51,7 +51,7 @@ public class Configuration implements Serializable {
 
         while (true) {
             maxTicketCapacity = validateConfiguration("Enter the maximum ticket capacity: ");
-            if (totalTickets <= maxTicketCapacity) {
+            if (totalTickets >= maxTicketCapacity) {
                 break; // Exit the loop if maxTicketCapacity is valid
             } else {
                 System.out.println("Total ticket capacity must be less than or equal to the maximum number of tickets.");

@@ -17,6 +17,7 @@ public class TicketPool {
         while (tickets.size() >= maxCapacity || addedTicketsCount >= maxCapacity) {
             if (addedTicketsCount >= maxCapacity) {
                 System.out.println("Ticket limit reached. Vendor stopped adding tickets.");
+                vendor1.interrupt();
                 return; // Stop adding tickets if limit is reached
             }
             wait(); // Wait if the pool is full

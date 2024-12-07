@@ -16,7 +16,7 @@ public class TicketingSystem {
         System.out.println("Configuration is valid. Initializing system...");
 
         // Initialize TicketPool
-        TicketPool ticketPool = new TicketPool(config);
+        TicketPool ticketPool = new TicketPool();
 
         // Create Vendor and Customer threads
         Thread vendor1 = new Thread(new Vendor(ticketPool, "Vendor1", config));

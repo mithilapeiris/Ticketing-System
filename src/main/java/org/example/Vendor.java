@@ -9,7 +9,7 @@ public class Vendor implements Runnable {
     public Vendor(TicketPool ticketPool, String vendorName, Configuration config) {
         this.ticketPool = ticketPool;
         this.vendorName = vendorName;
-        this.ticketsPerRelease = config.getTicketReleaseRate(); // Tickets per release
+        this.ticketsPerRelease = 1; // Tickets per release
         this.releaseInterval = config.getTicketReleaseRate();  // Release interval in ms
     }
 
